@@ -1,0 +1,19 @@
+package bank;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class UOBBank implements Bank {
+	
+	private String location;
+	
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+	public void getBankDetails() {
+		System.out.println("UOB" + location);
+
+	}
+
+}

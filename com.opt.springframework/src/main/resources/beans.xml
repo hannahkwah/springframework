@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+		
+<!-- byType ignores the id, byName get by the name of   -->
+	<bean id="John" class="com.spring.example1.Bank" autowire="byName">
+	
+		<property name="bankCode" value="DBS123"></property>
+		
+		<!-- <property name="employee" ref="Ain"></property> -->
+		
+	</bean>
+
+   <bean id="employee" class="com.spring.example1.Employee" autowire="constructor">
+   
+		<!-- <property name="employeeName" value="Sakthi"></property> -->
+		<!-- <property name="refAddress" ref="Dzul"></property> -->
+		
+		<constructor-arg type="String" value="Sakthi"></constructor-arg>
+		<constructor-arg type="int" value="12345"></constructor-arg>
+		
+  </bean>
+  
+  <!-- internally constructor works as byType -->
+  <bean id="refAddress" class="com.spring.example1.Address">
+  
+  		<!-- <property name="address" value="Changi"></property> -->
+  		
+  		<constructor-arg type="String" value="Changi"></constructor-arg>
+  </bean>
+ 
+</beans>
+
+
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+		
+	<bean id="library" class="collections.Library">
+	
+		<property name="bookList">
+			<list>
+				<value>101</value>
+				<ref bean="book" />
+				<bean class="collections.Book">
+					<property name="author" value="agatha"></property>
+					<property name="year" value="1936"></property>
+				</bean>
+				<bean class="collections.Categories">
+					<property name="bookGenres" value="Detective"></property>
+					<property name="title" value="The ABC Murders"></property>
+				</bean>
+			</list>
+		</property>
+		
+		<property name="bookSet">
+			<set>
+				<value>201</value>
+				<ref bean="book" />
+				<bean class="collections.Book">
+					<property name="author" value="Shakespeare"></property>
+					<property name="year" value="1971"></property>
+				</bean>
+				<bean class="collections.Categories">
+					<property name="bookGenres" value="Literature"></property>
+					<property name="title" value="MacBeth"></property>
+				</bean>
+			</set>
+		</property>
+		
+		<property name="bookMap">
+			<map>
+				<entry key="key301" value="301"></entry>
+				<entry key="key401" value-ref="categories"></entry>
+				<entry key="key501">
+					<bean class="collections.Book">
+						<property name="author" value="Tetsuko Kuroyanagi"></property>
+						<property name="year" value="1981"></property>
+					</bean>
+				</entry>
+				<!-- cannot have 2 bean in 1 entry for <map> -->
+				<entry key="key501">
+					<bean class="collections.Categories">
+						<property name="bookGenres" value="Children's literature"></property>
+						<property name="title" value="Totto-chan"></property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+		
+		<property name ="bookProperties">
+			<props>
+				<prop key="admin">admin@gmail.com</prop>
+				<prop key="support">support@gmail.com</prop>
+			</props>
+		
+		</property>
+		
+	</bean>
+
+   <bean id="book" class="collections.Book">
+   
+		<property name="author" value="Spring People"></property>
+		<property name="year" value="2020"></property>
+		
+  </bean>
+  
+  <bean id="categories" class="collections.Categories">
+  
+  		<property name="bookGenres" value="Children's literature"></property>
+  		<property name="title" value="Matilda"></property>
+  
+  </bean>
+ 
+</beans>
+
+
+
